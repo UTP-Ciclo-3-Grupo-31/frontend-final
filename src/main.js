@@ -7,7 +7,7 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const base = axios.create({
-  baseURL : 'http://localhost:3000'
+  baseURL : 'https://frozen-shelf-78310.herokuapp.com/'
 })
 
 Vue.config.productionTip = false
