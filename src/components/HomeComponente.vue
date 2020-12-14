@@ -29,7 +29,7 @@ export default {
         let user = VueJwtDecode.decode(token);
         console.log(user)
         if(token){
-          this.user = this.user;
+          this.user = user;
         }
       },
       logOut(){
