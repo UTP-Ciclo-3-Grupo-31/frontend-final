@@ -1,8 +1,18 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
+import axios from 'axios'
+
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+const base = axios.create({
+  baseURL : 'http://localhost:3000'
+})
 
 Vue.config.productionTip = false
+
+Vue.prototype.$http = base;
 
 new Vue({
   router,
