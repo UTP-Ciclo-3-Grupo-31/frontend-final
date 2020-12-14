@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
+    <h2> DEBERIAMOS HABLAR DEL TEMA PRINCIPAL</h2>
     <home-component></home-component>
 
   </div>

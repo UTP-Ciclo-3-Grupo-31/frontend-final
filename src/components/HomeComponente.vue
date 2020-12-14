@@ -1,31 +1,15 @@
 <template>
-  <div>
-    <!-- Image and text -->
-    <nav class="navbar navbar-light bg-light">
-      <a class="navbar-brand" href="#">
-        <img
-          src="/docs/4.0/assets/brand/bootstrap-solid.svg"
-          width="30"
-          height="30"
-          class="d-inline-block align-top"
-          alt=""
-        />
-        Grupo31
-      </a>
-      <form class="form-inline">
-          <div class="form-group">
-              <label for="">Cerrar Sesion</label>
-              <input @click="logOut" type="text" name="" id="" class="form-control" placeholder="" aria-describedby="helpId">
-              <small id="helpId" class="text-muted">Help text</small>
-          </div>
-      </form>
-    </nav>
-    <div class="container">
-      <p>nombre Usuario</p>
-        {{user.nombre}}
-      <p>email</p>
-        {{user.email}}
+  <div class="container">
+    <div >
+      <h3>Datos del usuario:</h3>
+      <p>
+        nombre Usuario: {{user.nombre}} <br> 
+        email: {{user.email}} 
+      </p>
+               
     </div>
+    
+    <a class="btn btn-primary" @click="logOut">logOut</a>
   </div>
 </template>
 
@@ -38,7 +22,7 @@ export default {
     return {};
   },
   methods: {
-      getuserDetails(){
+      getUserDetails(){
         let user = localStorage.getItem('user');
         let token = localStorage.getItem('jwt');
         if(token){

@@ -32,7 +32,7 @@ export default {
     data() {
         return {
             login:{
-              email:'pruebas@gmail.com',
+              email:'ejemplo@gmail.com',
               password:'micontraseña'
             }
         }
@@ -43,20 +43,22 @@ export default {
           let response = await this.$http.post('/api/auth/signin', this.login)
           console.log(response)
 
-          let token = response.data.tokenReturn;
+          let token = response.data.accessToken;
           let user = response.data.user;
 
           localStorage.setItem('jwt',token);
           localStorage.setItem('user', JSON.stringify(user));
 
+          console.log("Usuario loggeado OK"+token)
           if(token){
+            console.log("Token OK")
             swal('Exito!','Login Correcto!!!', 'success');
             this.$router.push('/home');
           }
 
         } catch (error) {
-            swal('Oops!',"Error al iniciar!!!", 'error');
-          //console.log(error.response);
+            swal('Oops!',"Error al iniciar!!!"+error, 'error');
+            console.log(error.response);
         }
       }
     },

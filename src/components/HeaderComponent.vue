@@ -8,6 +8,7 @@
             <nav class="flex-item" id="home">
                 <ul>
                     <router-link to="/">Inicio</router-link> |
+                    <router-link to="/home">Home</router-link> |
                     <router-link to="/about">About</router-link>
                 </ul>
             </nav>
