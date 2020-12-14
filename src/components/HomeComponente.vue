@@ -15,6 +15,7 @@
 
 
 <script>
+import VueJwtDecode from 'vue-jwt-decode'
 export default {
   name: "HomeComponente",
   props: ["home"],
@@ -23,8 +24,9 @@ export default {
   },
   methods: {
       getUserDetails(){
-        let user = localStorage.getItem('user');
+        //let token = localStorage.getItem('jwt');
         let token = localStorage.getItem('jwt');
+        let user = VueJwtDecode.decode(token);
         if(token){
           this.user = JSON.parse(user);
         }
