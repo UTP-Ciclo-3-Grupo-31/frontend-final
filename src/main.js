@@ -1,20 +1,17 @@
-import Vue from 'vue'
-import App from './App.vue'
-import router from './router'
-import axios from 'axios'
-
+import Vue from "vue";
+import App from "./App.vue";
+import router from "./router";
+import store from "./store";
+import vuetify from "./plugins/vuetify";
+import axios from 'axios';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const base = axios.create({
-  baseURL : 'https://frozen-shelf-78310.herokuapp.com/'
-})
-
-Vue.config.productionTip = false
-
-Vue.prototype.$http = base;
-
+Vue.config.productionTip = false;
+axios.defaults.baseURL = 'https://frozen-shelf-78310.herokuapp.com/api/';
 new Vue({
-  router,
-  render: h => h(App)
-}).$mount('#app')
+    router,
+    store,
+    vuetify,
+    render: h => h(App)
+}).$mount("#app");

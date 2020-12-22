@@ -1,60 +1,72 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Vue from "vue";
+import VueRouter from "vue-router";
+import Home from "../views/Home.vue";
+import Categoria from '../components/Categoria.vue';
+import Login from '../components/Login.vue';
+import store from '../store/index';
+import Articulo from '../components/Articulo.vue';
 
-Vue.use(VueRouter)
 
-const routes = [
-  {
-    path: '/',
-    name: 'Login',
-    component: () => import(/* webpackChunkName: "login" */ '../views/Login.vue')
-  },
-  {
-    path: '/home',
-    name: 'Home',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "home" */ '../views/Home.vue'),
-    meta:{
-      requiresAuth:true
-    }
-  },
-  {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
-    meta:{
-      requiresAuth:true
-    }
-  }
-]
+Vue.use(VueRouter);
 
+const routes = [{
+        path: "/login",
+        name: "login",
+        component: Login,
+        meta: {
+            public: true
+
+        }
+    },
+    {
+        path: "/",
+        name: "home",
+        component: Home,
+        meta: {
+            public: true
+
+        }
+
+    },
+    {
+        path: "/categoria",
+        name: "categoria",
+        component: Categoria,
+        meta: {
+            auth: true
+        }
+
+    },
+
+    {
+        path: "/articulo",
+        name: "articulo",
+        component: Articulo,
+        meta: {
+            auth: true
+        }
+
+    },
+
+];
 
 const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes
+    mode: "history",
+    base: process.env.BASE_URL,
+    routes
+});
+
+router.beforeEach((to, from, next) => {
+    if (to.matched.some(record => record.meta.public)) {
+        next();
+    } else if (store.state.usuario) {
+        if (to.matched.some(record => record.meta.auth)) {
+            console.log(store.state.usuario);
+            next();
+        }
+    } else {
+        next({ name: 'login' });
+    }
 })
 
-
-router.beforeEach((to,from, next)=>{
-  if(to.matched.some(record => record.meta.requiresAuth)){
-    if(localStorage.getItem('jwt') === null){
-      next({
-        path: '/'
-      })
-    }
-    else{
-      next();
-    }
-  }else{
-    next();
-  }
-})
-
-export default router
+export default router;

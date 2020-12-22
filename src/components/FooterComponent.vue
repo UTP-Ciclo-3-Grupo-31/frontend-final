@@ -4,8 +4,7 @@
             <h4><strong>Descripción del sitio web</strong></h4>
             <p> Este es un desarrollo Web creado por los estudiantes del grupo 31,<br> 
                 dentro del marco del modulo 3 del proyecto Misión Tic 2022, con el<br> 
-                cual se pretende mostrar las habilidades obtenidas durante la semana<br>
-                3 de dicho Modulo. <br> <br> 
+                cual se pretende mostrar las habilidades obtenidas durante dicho Modulo. <br> <br> 
 
                 <a target="_blank" class="btn btn-primary" href="https://github.com/UTP-Ciclo-3-Grupo-31/">https://github.com/UTP-Ciclo-3-Grupo-31/</a>
             </p>
